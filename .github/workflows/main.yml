@@ -26,11 +26,11 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-express-app:latest
       -
         name: Push to GitHub Container Registry
         run: |
-          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest ghcr.io/nicolasborlet/docker-githubaction/my-express-app:latest
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/my-express-app:latest ghcr.io/nicolasborlet/docker-githubaction/my-express-app:latest
           docker push ghcr.io/nicolasborlet/docker-githubaction/my-express-app:latest
         env:
           DOCKER_CLI_ACI_USERNAME: ${{ github.actor }}
