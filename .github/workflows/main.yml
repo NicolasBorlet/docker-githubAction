@@ -28,5 +28,11 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
       -
-        name: Add to Packages
-        run: docker push ghcr.io/nicolasborlet/my-express-app:latest
+        name: Push to GitHub Container Registry
+        run: |
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest ghcr.io/nicolasborlet/docker-githubaction/my-express-app:latest
+          docker push ghcr.io/nicolasborlet/docker-githubaction/clockbox:latest
+        env:
+          DOCKER_CLI_ACI_USERNAME: ${{ github.actor }}
+          DOCKER_CLI_ACI_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
