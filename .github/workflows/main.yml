@@ -29,12 +29,12 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
--
-  name: Push to GitHub Container Registry
-  run: |
-    docker tag ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/clockbox:latest
-    docker push ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/clockbox:latest
-  env:
-    DOCKER_CLI_ACI_USERNAME: ${{ github.actor }}
-    DOCKER_CLI_ACI_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+      -
+        name: Push to GitHub Container Registry
+        run: |
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/clockbox:latest
+          docker push ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/clockbox:latest
+        env:
+          DOCKER_CLI_ACI_USERNAME: ${{ github.actor }}
+          DOCKER_CLI_ACI_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
