@@ -30,10 +30,9 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
       -
-        name: Push to GitHub Container Registry
+        name: Pull from GitHub Container Registry
         run: |
-          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest ghcr.io/${{ secrets.GITHUB_REPOSITORY_OWNER }}/clockbox:latest
-          docker push ghcr.io/${{ secrets.GITHUB_REPOSITORY_OWNER }}/clockbox:latest
+          docker pull ghcr.io/nicolasborlet/clockbox:latest
         env:
           DOCKER_CLI_ACI_USERNAME: ${{ github.actor }}
           DOCKER_CLI_ACI_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
