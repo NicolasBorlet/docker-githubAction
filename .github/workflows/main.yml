@@ -29,4 +29,4 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
       -
         name: Add to Packages
-        run: docker push ghcr.io/NicolasBorlet/clockbox:latest
+        run: docker push ghcr.io/nicolasborlet/clockbox:latest
